@@ -1,0 +1,131 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent unwanted scrolling */
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background-color: #f5f5f5;
+}
+
+
+.sidebar {
+  width: 350px; /* Ensure sidebar doesn't shrink */
+  min-height: 100vh;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ecf0f1; /* Light grey input box */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+nav ul li {
+  padding: 15px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  transition: 0.3s background-color;
+}
+
+nav ul li:hover {
+  background-color: #34495e; /* Lighter grey on hover */
+}
+
+.bottom-links {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.main-content {
+  flex-grow: 1; /* Take the remaining space */
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow-y: auto;
+  height: 100vh;
+  width: calc(100vw - 260px); /* Ensure it takes the remaining width after sidebar */
+}
+
+
+
+
+/* Overview section and widget styles */
+.widget {
+  background-color: #ecf0f1; /* Light grey for widgets */
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.sushi-bars {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sushi-column {
+  width: 48%;
+}
+
+.sushi-bar {
+  background-color: #ecf0f1;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.sushi-bar.large {
+  height: 150px;
+}
+
+.sushi-bar.small {
+  height: 100px;
+}
+
+/* Styling the VisualisationChart */
+.visualisation-chart-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  height: 400px; /* Set height for the chart */
+}
+
+.visualisation-chart {
+  width: 100%;
+  height: 100%;
+}
