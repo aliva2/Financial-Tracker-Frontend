@@ -3,8 +3,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-%234169E1?style=for-the-badge&logo=postgresql&logoColor=white)  
 ![Docker](https://img.shields.io/badge/Docker-%232496ED?style=for-the-badge&logo=docker&logoColor=white)  
 ![OpenAI API](https://img.shields.io/badge/OpenAI%20API-%234B0082?style=for-the-badge&logo=openai&logoColor=white)  
-![JWT](https://img.shields.io/badge/JWT-%2334D399?style=for-the-badge&logo=jwt&logoColor=white)  
 ![Swagger](https://img.shields.io/badge/Swagger-%2398C0F8?style=for-the-badge&logo=swagger&logoColor=black)
+![JWT](https://img.shields.io/badge/JWT-%2334D399?style=for-the-badge&logo=jwt&logoColor=white)  
 
 # Getting Started with Create React App
 
