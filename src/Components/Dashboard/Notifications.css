@@ -1,0 +1,77 @@
+/* components/Notifications.css */
+
+.notifications-container {
+  max-width: 700px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-container h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.notifications-section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-section p {
+  font-size: 1rem;
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+.notification-list {
+  margin-bottom: 20px;
+}
+
+.notification-item {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notification-item strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #2980b9;
+}
+
+.notification-item p {
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.notification-item small {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  display: block;
+  margin-top: 5px;
+}
+
+.clear-notifications {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #95a5a6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.clear-notifications:hover {
+  background-color: #7f8c8d;
+}

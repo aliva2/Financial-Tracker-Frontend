@@ -1,0 +1,66 @@
+/* Main AI recommendations container */
+.ai-recommendations-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* AI recommendations section */
+.ai-recommendations h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.ai-recommendations p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+/* Display each recommendation */
+.recommendations-list {
+  margin-bottom: 30px;
+}
+
+.recommendation-item {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Input section for adding a user note */
+.input-section {
+  margin-top: 30px;
+}
+
+.input-section textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.input-section button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.input-section button:hover {
+  background-color: #2980b9;
+}

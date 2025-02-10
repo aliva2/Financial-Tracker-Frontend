@@ -13,9 +13,8 @@ html, body {
   background-color: #f5f5f5;
 }
 
-
 .sidebar {
-  width: 350px; /* Ensure sidebar doesn't shrink */
+  width: 350px; 
   min-height: 100vh;
   background-color: #2c3e50;
   color: white;
@@ -24,11 +23,15 @@ html, body {
   flex-direction: column;
 }
 
-
 .app-name {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  padding-left: 30px;
+}
+
+.search-bar {
+  padding-left: 30px;
 }
 
 .search-bar input {
@@ -37,7 +40,7 @@ html, body {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #ecf0f1; /* Light grey input box */
+  background-color: #ecf0f1; 
 }
 
 nav ul {
@@ -49,13 +52,14 @@ nav ul {
 nav ul li {
   padding: 15px;
   cursor: pointer;
-  text-align: center;
+  text-align: left; /* Align text to the left */
+  padding-left: 60px; /* Adjust left padding for spacing */
   border-radius: 5px;
   transition: 0.3s background-color;
 }
 
 nav ul li:hover {
-  background-color: #34495e; /* Lighter grey on hover */
+  background-color: #34495e; 
 }
 
 .bottom-links {
@@ -66,7 +70,7 @@ nav ul li:hover {
 }
 
 .main-content {
-  flex-grow: 1; /* Take the remaining space */
+  flex-grow: 1; 
   padding: 10px;
   background-color: #ffffff;
   border-radius: 5px;
@@ -77,12 +81,9 @@ nav ul li:hover {
   width: calc(100vw - 260px); /* Ensure it takes the remaining width after sidebar */
 }
 
-
-
-
 /* Overview section and widget styles */
 .widget {
-  background-color: #ecf0f1; /* Light grey for widgets */
+  background-color: #ecf0f1; 
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
@@ -128,4 +129,11 @@ nav ul li:hover {
 .visualisation-chart {
   width: 100%;
   height: 100%;
+}
+
+.profile-icon {
+  font-size: 28px; /* Adjust size */
+  color: #333; /* Change color */
+  margin-right: 8px;
+  cursor: pointer;
 }

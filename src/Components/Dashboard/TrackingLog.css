@@ -1,0 +1,91 @@
+/* Overall wrapper */
+.tracking-log-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  background-color: #fafafa;
+}
+
+/* Container holding the entire tracking log */
+.tracking-log-container {
+  max-width: 1000px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header style */
+.tracking-log-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Section styles */
+.tracking-log-section {
+  margin-bottom: 30px;
+}
+
+.tracking-log-section h3 {
+  font-size: 1.8rem;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+/* Expense summary for overall expenses */
+.expense-summary {
+  font-size: 1.2rem;
+  color: #16a085;
+}
+
+/* Lists of weekly and monthly expenses */
+.expenses-list {
+  margin-top: 15px;
+}
+
+.week-expense-item,
+.month-expense-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ecf0f1;
+  padding-bottom: 15px;
+}
+
+.week-header,
+.month-header {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.expense-details {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.expense-details li {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tracking-log-container {
+    padding: 15px;
+  }
+
+  .tracking-log-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .tracking-log-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .expense-summary p {
+    font-size: 1rem;
+  }
+}

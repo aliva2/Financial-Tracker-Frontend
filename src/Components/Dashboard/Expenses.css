@@ -1,0 +1,74 @@
+/* Wrapper for the entire content */
+.site-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Main expenses container */
+.expenses-container {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Expenses section */
+.expenses h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.expenses-list h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+.expenses-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expenses-list th,
+.expenses-list td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.add-expense {
+  margin-top: 30px;
+}
+
+.add-expense select,
+.add-expense input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-expense button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-expense button:hover {
+  background-color: #2980b9;
+}

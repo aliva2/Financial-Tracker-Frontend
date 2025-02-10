@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js'; // Import necessary components from Chart.js
+import './VisualisationChart.css';
 
 // Register components with Chart.js
 ChartJS.register(
@@ -62,8 +63,16 @@ const VisualisationChart = () => {
   };
 
   return (
-    <div className="visualisation-chart-container">
-      <Bar data={data} options={options} /> {/* Render the Bar chart */}
+    <div className="site-content">
+      <div className="visualisation-chart-container">
+        <h2>Financial Visualization</h2>
+        <p>This chart shows the comparison between monthly expenses and income.</p>
+        
+        {/* Chart */}
+        <div className="chart-wrapper">
+          <Bar data={data} options={options} /> {/* Render the Bar chart */}
+        </div>
+      </div>
     </div>
   );
 };

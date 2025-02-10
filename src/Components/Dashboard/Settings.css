@@ -1,0 +1,142 @@
+/* Components/Settings.css */
+
+.settings-container {
+  max-width: 700px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-container h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.settings-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h2 {
+  font-size: 1.5rem;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.setting-item {
+  margin-bottom: 20px;
+}
+
+.setting-item label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.setting-item input,
+.setting-item select {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.setting-item input[type="checkbox"] {
+  width: auto;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.setting-item button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.setting-item button:hover {
+  background-color: #2980b9;
+}
+
+.save-button {
+  background-color: #2ecc71;
+}
+
+.save-button:hover {
+  background-color: #27ae60;
+}
+
+@media (max-width: 768px) {
+  .settings-container {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .settings-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .settings-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .setting-item input,
+  .setting-item select {
+    max-width: 100%;
+  }
+
+  .setting-item button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-container {
+    padding: 10px;
+  }
+
+  .settings-container h1 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .settings-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .setting-item input,
+  .setting-item select {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  .setting-item button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .setting-item {
+    margin-bottom: 15px;
+  }
+}

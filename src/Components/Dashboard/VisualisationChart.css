@@ -1,0 +1,54 @@
+/* Main visualisation container */
+.visualisation-chart-container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures the content stays within the container */
+  display: flex;
+  flex-direction: column;
+  min-height: 500px; /* Ensure there is enough space for the chart */
+}
+
+/* Container for the chart, ensure it can scale with the content */
+.chart-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Allow the chart container to grow with available space */
+  min-height: 400px; /* Provide a minimum height for the chart */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Avoid overflow of chart */
+}
+
+/* Make the chart responsive */
+.visualisation-chart-container h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.visualisation-chart-container p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .visualisation-chart-container {
+    padding: 15px;
+    min-height: 400px; /* Adjust minimum height for smaller screens */
+  }
+
+  .chart-wrapper {
+    padding: 15px;
+    min-height: 300px; /* Reduce minimum height on smaller screens */
+  }
+}

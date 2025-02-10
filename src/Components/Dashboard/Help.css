@@ -1,0 +1,70 @@
+/* components/Help.css */
+
+.help-center {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.help-center h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.help-center p {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.help-menu {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.help-menu button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.help-menu button:hover {
+  background-color: #2980b9;
+}
+
+.help-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.help-section {
+  margin-bottom: 20px;
+}
+
+.help-section h2 {
+  font-size: 1.5rem;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+.help-section p {
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.help-section strong {
+  font-weight: bold;
+}
