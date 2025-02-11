@@ -38,14 +38,24 @@ const Settings = () => {
             />
           </div>
           <div className="setting-item">
-            <label>Password:</label>
+            <label>Old Password:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Change your password"
+              placeholder="Old password"
             />
           </div>
+          <div className="setting-item">
+            <label>New Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="New password"
+            />
+          </div>
+
           <div className="setting-item">
             <button className="save-button" onClick={handleSaveChanges}>Save Changes</button>
           </div>

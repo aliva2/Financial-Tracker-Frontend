@@ -68,3 +68,23 @@
 .help-section strong {
   font-weight: bold;
 }
+
+/* Responsive Design: When screen size gets smaller */
+@media (max-width: 1200px) {
+  .help-center {
+    width: 80%; /* Increase width for medium screens */
+  }
+}
+
+@media (max-width: 992px) {
+  .help-center {
+    width: 90%; /* Shrink width for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .help-center {
+    width: 100%; /* Full width for very small screens */
+    padding: 10px; /* Reduce padding for smaller devices */
+  }
+}

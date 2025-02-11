@@ -45,9 +45,16 @@
 
 .wrapper .remember-forgot {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   font-size: 14.5px;
   margin: -15px 0 15px;
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center; /* Ensures the checkbox and text are on the same line */
+  gap: 5px; /* Adds spacing between checkbox and text */
 }
 
 .remember-forgot label input {

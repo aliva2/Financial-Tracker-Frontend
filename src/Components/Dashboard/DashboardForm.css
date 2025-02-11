@@ -30,19 +30,6 @@ html, body {
   padding-left: 30px;
 }
 
-.search-bar {
-  padding-left: 30px;
-}
-
-.search-bar input {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #ecf0f1; 
-}
-
 nav ul {
   list-style-type: none;
   padding: 0;
@@ -60,6 +47,11 @@ nav ul li {
 
 nav ul li:hover {
   background-color: #34495e; 
+}
+
+nav ul li.active {
+  background-color: #3b536f !important; /* Lighter background when clicked */
+  font-weight: bold; /* Optional: Make text bold */
 }
 
 .bottom-links {
@@ -131,9 +123,27 @@ nav ul li:hover {
   height: 100%;
 }
 
-.profile-icon {
-  font-size: 28px; /* Adjust size */
-  color: #333; /* Change color */
-  margin-right: 8px;
-  cursor: pointer;
+.unhoverable {
+  pointer-events: none;  /* Disables hover & click */
+  background: transparent !important; /* Keeps it visually neutral */
+  cursor: default; /* Prevents hover effects */
+  height: 10px; /* Adjust height to create spacing */
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  padding-left: 30px;
+  display: flex; /* Use flexbox to align the elements */
+  align-items: center; /* Vertically center the text and icon */
+}
+
+.app-name span {
+  margin-right: 10px; /* Space between the text and the icon */
+}
+
+.app-name svg {
+  font-size: 2.5rem; /* Ensure the icon size matches the text size */
+  margin-top: 4px;
 }

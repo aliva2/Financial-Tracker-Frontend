@@ -8,6 +8,7 @@ const RegisterForm = ({ onBackToLoginClick }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
   
   const handleBackToLogin = (event) => {
     event.preventDefault();  // Prevent default anchor tag behavior
@@ -96,6 +97,18 @@ const RegisterForm = ({ onBackToLoginClick }) => {
             required 
           />
           <FaLock className='icon'/>
+        </div>
+
+        {/* Role */}
+        <div className='input-box'>
+          <input 
+            type="role" 
+            placeholder="Role" 
+            value={role} 
+            onChange={(e) => setRole(e.target.value)} 
+            required 
+          />
+          <FaUser className='icon'/>
         </div>
 
         {/* Register Button */}

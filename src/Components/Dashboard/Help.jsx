@@ -67,6 +67,14 @@ const Help = () => {
                 <strong>Step 2: Add Expenses</strong>
                 <p>Once logged in, click on "Add Expense" to enter your expenses.</p>
               </div>
+              <div>
+                <strong>Step 3: View Expenses</strong>
+                <p>Click on "View Expenses" to see a list of all your expenses, with the option to filter and sort them.</p>
+              </div>
+              <div>
+                <strong>Step 4: Set Budget</strong>
+                <p>Set a monthly budget by clicking "Set Budget" and entering your desired limit.</p>
+              </div>
             </div>
           )}
 
@@ -82,8 +90,17 @@ const Help = () => {
                 <strong>Unable to Add Expense</strong>
                 <p>Ensure you have entered all required fields and your internet connection is stable.</p>
               </div>
+              <div>
+                <strong>Can't Save Expense</strong>
+                <p>Make sure that all required fields are filled out and that you have internet access.</p>
+              </div>
+              <div>
+                <strong>Data Not Syncing</strong>
+                <p>If your data isn't syncing, check your internet connection and try reloading the app.</p>
+              </div>
             </div>
           )}
+
 
           {activeContent === 'contacts' && (
             <div className="help-section">

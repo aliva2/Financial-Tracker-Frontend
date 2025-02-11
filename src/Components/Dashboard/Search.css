@@ -1,0 +1,44 @@
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input {
+  padding-right: 30px; /* Space for the icon */
+  padding: 10px;
+  width: 100%; /* Ensure the search input takes up the full width of its parent container */
+  max-width: 400px; /* You can set a max-width so that the search input doesn't grow too large */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ecf0f1;
+  padding-left: 60px;
+}
+
+.search-input:focus {
+  border-color: #3498db; /* Focus color */
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px; /* Position the icon on the right side */
+  color: #ccc; /* Icon color */
+  font-size: 1.2rem;
+  
+}
+
+.search-bar {
+  padding-left: 30px;
+
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ecf0f1; 
+}
