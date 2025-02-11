@@ -1,26 +1,35 @@
 // https://react-icons.github.io/react-icons/
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+
+import axios from "../../../api/axios";
+
+const LOGIN_URL = "/api/auth/login";
 
 // LoginForm
 const LoginForm = ({ onRegisterClick }) => {
+  const { setAuth } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Initialize navigate
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", {
-        username,
-        password,
+      const response = await axios.post(LOGIN_URL, JSON.stringify({ username, password }), {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
       });
-      localStorage.setItem("jwt", response.data.accessToken); // Save JWT token in local storage
+      console.log(JSON.stringify(response.data));
+      const accessToken = response.data.accessToken;
+      setAuth({ user: username, accessToken });
+      setUsername("");
+      setPassword("");
       navigate("/dashboard");
     } catch (err) {
       setError("Invalid username or password");

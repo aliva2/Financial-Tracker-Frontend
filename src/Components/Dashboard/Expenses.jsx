@@ -25,6 +25,15 @@ const Expenses = () => {
 
   // Fetch categories from the database when the component mounts
   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    console.log(config);
+
     const fetchCategories = async () => {
       try {
         const response = await authAxios.get("/categories/all");
