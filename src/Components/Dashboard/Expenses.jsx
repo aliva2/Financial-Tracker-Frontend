@@ -16,17 +16,18 @@ const Expenses = () => {
   });
   const [date, setDate] = useState();
 
+  const authAxios = axios.create({
+    baseURL: "http://localhost:8080/api",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    },
+  });
+
   // Fetch categories from the database when the component mounts
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/categories/all", config);
+        const response = await authAxios.get("/categories/all");
         setCategories(response.data); // Assume the API returns an array of categories
       } catch (error) {
         console.error("Error fetching categories", error);
@@ -35,7 +36,7 @@ const Expenses = () => {
 
     const fetchExpenses = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+        const response = await authAxios.get("/expenses/all");
         setExpenses(response.data);
       } catch (error) {
         console.error("Error fetching expenses", error);
@@ -47,24 +48,14 @@ const Expenses = () => {
   }, []);
 
   // Handle form submission (adding expense)
-  const handleSubmit = async (e) => {
-    const token = localStorage.getItem("jwt");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+  const handleSubmit = async () => {
     try {
-      await axios.post(
-        "http://localhost:8080/api/expenses/add",
-        {
-          amount: parseFloat(amount),
-          description: description,
-          categoryId: category,
-          date: date,
-        },
-        config
-      );
+      await authAxios.post("/expenses/add", {
+        amount: parseFloat(amount),
+        description: description,
+        categoryId: category,
+        date: date,
+      });
       fetchExpenses();
     } catch (error) {
       console.error("Error adding expense:", error);
@@ -72,24 +63,12 @@ const Expenses = () => {
   };
 
   const deleteExpense = async (id) => {
-    const token = localStorage.getItem("jwt");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
     try {
-      await axios.delete(`http://localhost:8080/api/expenses/delete/${id}`, config);
+      await authAxios.delete(`/expenses/delete/${id}`);
 
       const fetchExpenses = async () => {
         try {
-          const token = localStorage.getItem("jwt");
-          const config = {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          };
-          const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+          const response = await authAxios.get("/expenses/all");
           setExpenses(response.data);
         } catch (error) {
           console.error(error);
@@ -104,9 +83,7 @@ const Expenses = () => {
 
   const fetchExpenses = async () => {
     try {
-      const token = localStorage.getItem("jwt");
-      const config = { headers: { Authorization: `Bearer ${token}` } };
-      const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+      const response = await authAxios.get("/expenses/all");
       setExpenses(response.data);
     } catch (error) {
       console.error("Error fetching expenses:", error);
