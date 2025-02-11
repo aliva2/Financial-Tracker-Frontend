@@ -1,6 +1,6 @@
 // https://react-icons.github.io/react-icons/
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./LoginForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -13,10 +13,17 @@ const LOGIN_URL = "/api/auth/login";
 // LoginForm
 const LoginForm = ({ onRegisterClick }) => {
   const { setAuth } = useAuth();
+  const { auth } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Initialize navigate
+
+  useEffect(() => {
+    if (auth?.user) {
+      navigate("/dashboard");
+    }
+  }, [auth, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,6 +34,11 @@ const LoginForm = ({ onRegisterClick }) => {
       });
       console.log(JSON.stringify(response.data));
       const accessToken = response.data.accessToken;
+      const user = username;
+
+      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem("user", user);
+
       setAuth({ user: username, accessToken });
       setUsername("");
       setPassword("");

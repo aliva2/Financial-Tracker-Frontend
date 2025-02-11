@@ -19,20 +19,18 @@ const Expenses = () => {
   const authAxios = axios.create({
     baseURL: "http://localhost:8080/api",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   });
 
   // Fetch categories from the database when the component mounts
   useEffect(() => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("accessToken");
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-
-    console.log(config);
 
     const fetchCategories = async () => {
       try {
