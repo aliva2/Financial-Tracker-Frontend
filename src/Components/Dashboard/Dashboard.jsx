@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import './DashboardForm.css';  
 import VisualisationChart from './VisualisationChart';  // Import the chart component
 import Overview from "./Overview";
@@ -16,6 +16,8 @@ import './Profile.css';
 import Footer from './Footer'; 
 import Profile from './Profile';
 import Search from './Search';
+import Categories from "./Categories";
+
 
 const Dashboard = () => {
   const [activeSection, setActiveSection] = useState('overview'); 
@@ -58,8 +60,8 @@ const Dashboard = () => {
             <li onClick={() => handleSectionClick('charts')}  className={activeSection === 'charts' ? 'active' : ''}>Charts</li>
             <li onClick={() => handleSectionClick('settings')} className={activeSection === 'settings' ? 'active' : ''}>Settings</li>
             <li onClick={() => handleSectionClick('preferences')}  className={activeSection === 'preferences' ? 'active' : ''}>Preferences</li>
+            <li onClick={() => handleSectionClick('categories')} className={activeSection === 'categories' ? 'active' : ''}>Manage Categories</li>
             {/* Empty List Items (Unhoverable) */}
-            <li className="unhoverable"></li>
             <li className="unhoverable"></li>
             <li className="unhoverable"></li>
             <li className="unhoverable"></li>
@@ -86,6 +88,8 @@ const Dashboard = () => {
         {activeSection === 'charts' && <Charts />}
         {activeSection === 'settings' && <Settings />}
         {activeSection === 'preferences' && <Preferences />}
+        {activeSection === 'categories' && <Categories />}
+
           {/* Add Notifications and Help here */}
         {activeSection === 'notifications' && <Notifications />}
         {activeSection === 'help' && <Help />}

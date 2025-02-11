@@ -69,22 +69,24 @@
   font-weight: bold;
 }
 
-/* Responsive Design: When screen size gets smaller */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 1200px) {
-  .help-center {
-    width: 80%; /* Increase width for medium screens */
+  .help-menu button {
+    padding: 8px 15px; /* Adjust padding for medium screens */
+  
   }
 }
 
 @media (max-width: 992px) {
-  .help-center {
-    width: 90%; /* Shrink width for smaller screens */
+  .help-menu button {
+    padding: 6px 12px; /* Smaller padding for smaller screens */
+    
   }
 }
 
 @media (max-width: 768px) {
-  .help-center {
-    width: 100%; /* Full width for very small screens */
-    padding: 10px; /* Reduce padding for smaller devices */
+  .help-menu button {
+    padding: 5px 10px; /* Further reduce padding for mobile screens */
+   
   }
 }

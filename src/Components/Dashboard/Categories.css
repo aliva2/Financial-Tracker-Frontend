@@ -1,0 +1,123 @@
+.categories-container {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.add-category {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add-category input {
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-category button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-category button:hover {
+  background-color: #2980b9;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  display: flex;
+  justify-content: space-between; /* Space out the items */
+  align-items: center;
+  padding: 10px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-list li .category-name {
+  flex-grow: 1; /* Allow the category name to take up remaining space */
+  padding-right: 20px; /* Add some spacing between the name and buttons */
+}
+
+.category-list li div {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-left: auto; /* Push the buttons to the right */
+}
+
+.delete-btn, .update-btn {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.update-btn {
+  background-color: #3498db;
+}
+
+.update-btn:hover {
+  background-color: #2980b9;
+}
+
+.save-btn {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  background-color: #2ecc71; /* Green color for Save */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+  background-color: #27ae60; /* Darker green on hover */
+}
+
+.cancel-btn {
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  background-color: #e74c3c; /* Red color for Cancel */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './RegisterForm.css';  
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa"; // Importing icons for Username, Email, and Password.
-import axios from 'axios';
+//import axios from 'axios';
+import { FaChevronDown } from 'react-icons/fa';
 
 
 const RegisterForm = ({ onBackToLoginClick }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-  const [role, setRole] = useState('');
-  
+  const [role, setRole] = useState('User');
+
   const handleBackToLogin = (event) => {
     event.preventDefault();  // Prevent default anchor tag behavior
     onBackToLoginClick();
@@ -101,14 +102,11 @@ const RegisterForm = ({ onBackToLoginClick }) => {
 
         {/* Role */}
         <div className='input-box'>
-          <input 
-            type="role" 
-            placeholder="Role" 
-            value={role} 
-            onChange={(e) => setRole(e.target.value)} 
-            required 
-          />
-          <FaUser className='icon'/>
+          <select value={role} onChange={(e) => setRole(e.target.value)} required>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
+          <FaChevronDown className='icon' />
         </div>
 
         {/* Register Button */}
