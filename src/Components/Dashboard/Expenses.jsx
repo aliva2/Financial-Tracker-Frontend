@@ -1,51 +1,115 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // You'll need axios or any other library to make API requests
-import './Expenses.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // You'll need axios or any other library to make API requests
+import "./Expenses.css";
 const Expenses = () => {
   // State for managing categories, expenses, and form inputs
   const [categories, setCategories] = useState([]);
-  const [expenses, setExpenses] = useState([
-    { id: 1, category: 'Food', amount: 50.00, date: '2025-02-10' },
-    { id: 2, category: 'Transport', amount: 30.00, date: '2025-02-09' },
-    { id: 3, category: 'Entertainment', amount: 20.00, date: '2025-02-08' },
-  ]);
-  const [newExpense, setNewExpense] = useState({
-    category: '',
-    amount: '',
-    date: ''
+  const [expenses, setExpenses] = useState([]);
+  const [newExpense, setNewExpense] = useState([]);
+  const [expense, setExpense] = useState();
+
+  const [amount, setAmount] = useState();
+  const [description, setDescription] = useState();
+  const [category, setCategory] = useState({
+    id: "",
+    title: "",
   });
+  const [date, setDate] = useState();
 
   // Fetch categories from the database when the component mounts
   useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://your-api-endpoint.com/categories');
+        const response = await axios.get("http://localhost:8080/api/categories/all", config);
         setCategories(response.data); // Assume the API returns an array of categories
       } catch (error) {
         console.error("Error fetching categories", error);
       }
     };
 
+    const fetchExpenses = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+        setExpenses(response.data);
+      } catch (error) {
+        console.error("Error fetching expenses", error);
+      }
+    };
+
     fetchCategories();
+    fetchExpenses();
   }, []);
 
-  // Handle input change
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNewExpense({
-      ...newExpense,
-      [name]: value
-    });
+  // Handle form submission (adding expense)
+  const handleSubmit = async (e) => {
+    const token = localStorage.getItem("jwt");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      await axios.post(
+        "http://localhost:8080/api/expenses/add",
+        {
+          amount: parseFloat(amount),
+          description: description,
+          categoryId: category,
+          date: date,
+        },
+        config
+      );
+      fetchExpenses();
+    } catch (error) {
+      console.error("Error adding expense:", error);
+    }
   };
 
-  // Handle form submission (adding expense)
-  const handleSubmit = () => {
-    if (newExpense.category && newExpense.amount && newExpense.date) {
-      setExpenses([
-        ...expenses,
-        { ...newExpense, id: expenses.length + 1 }
-      ]);
-      setNewExpense({ category: '', amount: '', date: '' }); // Reset form
+  const deleteExpense = async (id) => {
+    const token = localStorage.getItem("jwt");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    try {
+      await axios.delete(`http://localhost:8080/api/expenses/delete/${id}`, config);
+
+      const fetchExpenses = async () => {
+        try {
+          const token = localStorage.getItem("jwt");
+          const config = {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+          const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+          setExpenses(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchExpenses();
+    } catch (error) {
+      console.error("Error deleting expense:", error);
+    }
+  };
+
+  const fetchExpenses = async () => {
+    try {
+      const token = localStorage.getItem("jwt");
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      const response = await axios.get("http://localhost:8080/api/expenses/all", config);
+      setExpenses(response.data);
+    } catch (error) {
+      console.error("Error fetching expenses:", error);
     }
   };
 
@@ -64,6 +128,7 @@ const Expenses = () => {
                   <th>Category</th>
                   <th>Amount</th>
                   <th>Date</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -72,6 +137,9 @@ const Expenses = () => {
                     <td>{expense.category}</td>
                     <td>${expense.amount}</td>
                     <td>{expense.date}</td>
+                    <td>
+                      <button onClick={() => deleteExpense(expense.id)}>Delete</button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -83,33 +151,23 @@ const Expenses = () => {
             <h3>Add New Expense</h3>
 
             {/* Category Dropdown */}
-            <select
-              name="category"
-              value={newExpense.category}
-              onChange={handleChange}
-            >
-              <option value="">Select Category</option>
+            <select name="category" value={category.id ? category.id : ""} onChange={(e) => setCategory({ id: e.target.value, name: e.target.options[e.target.selectedIndex].text })}>
+              <option value="" defaultChecked>
+                Select Category
+              </option>
               {categories.map((category) => (
-                <option key={category.id} value={category.name}>
-                  {category.name}
+                <option key={category.id} value={category.id}>
+                  {category.title}
                 </option>
               ))}
+              required
             </select>
 
-            <input
-              type="number"
-              name="amount"
-              placeholder="Amount"
-              value={newExpense.amount}
-              onChange={handleChange}
-            />
+            <input type="number" name="amount" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
 
-            <input
-              type="date"
-              name="date"
-              value={newExpense.date}
-              onChange={handleChange}
-            />
+            <input type="text" name="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
+
+            <input type="date" name="date" onChange={(e) => setDate(e.target.value)} />
 
             <button onClick={handleSubmit}>Add Expense</button>
           </div>
