@@ -25,12 +25,12 @@ const Expenses = () => {
 
   // Fetch categories from the database when the component mounts
   useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+    // const token = localStorage.getItem("accessToken");
+    // const config = {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // };
 
     const fetchCategories = async () => {
       try {
@@ -43,7 +43,7 @@ const Expenses = () => {
 
     const fetchExpenses = async () => {
       try {
-        const response = await authAxios.get("/expenses/all");
+        const response = await authAxios.get("/transactions/expenses");
         setExpenses(response.data);
       } catch (error) {
         console.error("Error fetching expenses", error);
@@ -57,11 +57,12 @@ const Expenses = () => {
   // Handle form submission (adding expense)
   const handleSubmit = async () => {
     try {
-      await authAxios.post("/expenses/add", {
+      await authAxios.post("/transactions/add", {
         amount: parseFloat(amount),
         description: description,
-        categoryId: category,
+        categoryId: category.id,
         date: date,
+        transactionType: 1,
       });
       fetchExpenses();
     } catch (error) {
@@ -71,11 +72,11 @@ const Expenses = () => {
 
   const deleteExpense = async (id) => {
     try {
-      await authAxios.delete(`/expenses/delete/${id}`);
+      await authAxios.delete(`/transactions/delete/${id}`);
 
       const fetchExpenses = async () => {
         try {
-          const response = await authAxios.get("/expenses/all");
+          const response = await authAxios.get("/transactions/expenses");
           setExpenses(response.data);
         } catch (error) {
           console.error(error);
@@ -90,7 +91,7 @@ const Expenses = () => {
 
   const fetchExpenses = async () => {
     try {
-      const response = await authAxios.get("/expenses/all");
+      const response = await authAxios.get("/transactions/expenses");
       setExpenses(response.data);
     } catch (error) {
       console.error("Error fetching expenses:", error);
@@ -119,7 +120,7 @@ const Expenses = () => {
                 {expenses.map((expense) => (
                   <tr key={expense.id}>
                     <td>{expense.category}</td>
-                    <td>${expense.amount}</td>
+                    <td>${expense.amount * -1}</td>
                     <td>{expense.date}</td>
                     <td>
                       <button onClick={() => deleteExpense(expense.id)}>Delete</button>
