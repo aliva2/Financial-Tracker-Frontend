@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { analyzeExpense } from "../services/openAI";
+import './ExpenseAnalyzer.css';  // Assuming you have custom styles here
 
 const ExpenseAnalyzer = () => {
     const [category, setCategory] = useState("");
@@ -22,28 +23,39 @@ const ExpenseAnalyzer = () => {
     };
 
     return (
-        <div style={styles.container}>
+        <div style={styles.container} className="expense-analyzer-wrapper">
+            {/* Wrapper div for overall component */}
+            
             <h2 style={styles.title}>Expense Analyzer</h2>
-            <input
-                type="text"
-                placeholder="Category (For example: Food)"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                style={styles.input}
+
+            <div className="input-group">
+                <input
+                    type="text"
+                    placeholder="Category (e.g.,: Food)"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    style={styles.input}
             />
-            <input
-                type="number"
-                placeholder="Amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                style={styles.input}
+            </div>
+
+            <div className="input-group">
+                <input
+                    type="number"
+                    placeholder="Amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    style={styles.input}
             />
-            <button onClick={handleAnalyze} style={styles.button}>
+            </div>
+
+            <div className="button-group">
+                <button onClick={handleAnalyze} style={styles.button}>
                 Analyze
             </button>
+            </div>
 
             {advice && (
-                <div style={styles.adviceBox}>
+                <div className="advice-group" style={styles.adviceBox}>
                     <h3>Advice:</h3>
                     <p style={styles.adviceText}>{advice}</p>
                 </div>
