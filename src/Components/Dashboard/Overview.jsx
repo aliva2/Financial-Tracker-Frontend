@@ -79,8 +79,38 @@ const FinanceOverview = () => {
         date: date,
         transactionType: 1,
       });
+      fetchMonthExpenses();
+      fetchTotalIncome();
+      fetchExpenses();
     } catch (error) {
       console.error("Error adding expense:", error);
+    }
+  };
+
+  const fetchTotalIncome = async () => {
+    try {
+      const response = await authAxios.get("/transactions/incomes/monthly/total");
+      setIncome(response.data);
+    } catch (error) {
+      console.error("Error fetching expenses", error);
+    }
+  };
+
+  const fetchMonthExpenses = async () => {
+    try {
+      const response = await authAxios.get("/transactions/expenses/monthly/total");
+      setSpent(response.data);
+    } catch (error) {
+      console.error("Error fetching expenses", error);
+    }
+  };
+
+  const fetchExpenses = async () => {
+    try {
+      const response = await authAxios.get("/transactions/expenses");
+      setExpenses(response.data);
+    } catch (error) {
+      console.error("Error fetching expenses", error);
     }
   };
 

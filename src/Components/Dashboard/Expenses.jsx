@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // You'll need axios or any other library to make API requests
+import axios from "../../api/axios"; // You'll need axios or any other library to make API requests
 import "./Expenses.css";
 const Expenses = () => {
   // State for managing categories, expenses, and form inputs
@@ -14,7 +14,7 @@ const Expenses = () => {
   const [date, setDate] = useState();
 
   const authAxios = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: axios.baseURL,
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },

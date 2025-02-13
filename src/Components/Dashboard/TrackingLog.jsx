@@ -12,7 +12,7 @@ const TrackingLog = () => {
   };
 
   const authAxios = axios.create({
-    baseURL: "http://localhost:8080/api/",
+    baseURL: axios.baseURL,
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },

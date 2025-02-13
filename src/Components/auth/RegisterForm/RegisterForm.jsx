@@ -31,7 +31,7 @@ const RegisterForm = ({ onBackToLoginClick }) => {
     try {
       const roleValue = role === "ADMIN" ? 1 : 0;
       const user = await registerUser({ username, name, surname, password, email, roleValue });
-      console.log("Registration successful", user);
+      navigate("");
     } catch (error) {
       console.error(error.message);
     }

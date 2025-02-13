@@ -8,7 +8,7 @@ import useAuth from "../../../hooks/useAuth";
 
 import axios from "../../../api/axios";
 
-const LOGIN_URL = "/api/auth/login";
+const LOGIN_URL = "/auth/login";
 
 // LoginForm
 const LoginForm = ({ onRegisterClick }) => {
@@ -51,7 +51,6 @@ const LoginForm = ({ onRegisterClick }) => {
       setError(errorMessage); // Display error to the user
     }
   };
-
 
   return (
     <div className="wrapper">
