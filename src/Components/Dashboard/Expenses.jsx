@@ -5,9 +5,6 @@ const Expenses = () => {
   // State for managing categories, expenses, and form inputs
   const [categories, setCategories] = useState([]);
   const [expenses, setExpenses] = useState([]);
-  const [newExpense, setNewExpense] = useState([]);
-  const [expense, setExpense] = useState();
-
   const [amount, setAmount] = useState();
   const [description, setDescription] = useState();
   const [category, setCategory] = useState({
@@ -25,13 +22,6 @@ const Expenses = () => {
 
   // Fetch categories from the database when the component mounts
   useEffect(() => {
-    // const token = localStorage.getItem("accessToken");
-    // const config = {
-    //   headers: {
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    // };
-
     const fetchCategories = async () => {
       try {
         const response = await authAxios.get("/categories/all");
