@@ -51,10 +51,7 @@ const LoginForm = ({ onRegisterClick }) => {
       setError(errorMessage); // Display error to the user
     }
   };
-  // Handle "MockTry" button click: Redirect to the dashboard directly
-  const handleMockTry = () => {
-    navigate("/dashboard"); // Simulate a successful login and navigate to dashboard
-  };
+
 
   return (
     <div className="wrapper">
@@ -98,9 +95,6 @@ const LoginForm = ({ onRegisterClick }) => {
           </p>
         </div>
       </form>
-
-      {/* MockTry Button - delete later*/}
-      <button onClick={handleMockTry}>MockTry (Go to Dashboard)</button>
     </div>
   );
 };
