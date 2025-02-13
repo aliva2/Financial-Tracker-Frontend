@@ -1,37 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import moment from 'moment'; // You'll need to install this for date manipulation
-import './TrackingLog.css';
+import React, { useState, useEffect } from "react";
+import moment from "moment"; // You'll need to install this for date manipulation
+import "./TrackingLog.css";
+import axios from "../../api/axios";
 
 const TrackingLog = () => {
   // Sample data for expenses (in real app, this could come from a backend)
-  const [expenses, setExpenses] = useState([
-    { id: 1, category: 'Food', amount: 50.00, date: '2025-02-10' },
-    { id: 2, category: 'Transport', amount: 30.00, date: '2025-02-09' },
-    { id: 3, category: 'Entertainment', amount: 20.00, date: '2025-02-08' },
-    { id: 4, category: 'Food', amount: 60.00, date: '2025-01-15' },
-    { id: 5, category: 'Transport', amount: 25.00, date: '2025-01-10' },
-  ]);
+  const [expenses, setExpenses] = useState([]);
 
   const getTotalAmount = (filteredExpenses) => {
-    return filteredExpenses.reduce((total, expense) => total + expense.amount, 0);
+    return filteredExpenses.reduce((total, expense) => total + expense.amount * -1, 0);
   };
 
-  // Group expenses by week
-  const groupByWeek = (expenses) => {
-    const grouped = {};
-    expenses.forEach((expense) => {
-      const week = moment(expense.date).week();
-      if (!grouped[week]) grouped[week] = [];
-      grouped[week].push(expense);
-    });
-    return grouped;
-  };
+  const authAxios = axios.create({
+    baseURL: "http://localhost:8080/api/",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+
+  useEffect(() => {
+    const fetchMonthly = async () => {
+      try {
+        const response = await authAxios.get("/transactions/expenses/monthly");
+        setExpenses(response.data); // Assume the API returns an array of categories
+      } catch (error) {
+        console.error("Error fetching expensess", error);
+      }
+    };
+
+    fetchMonthly();
+  }, []);
 
   // Group expenses by month
   const groupByMonth = (expenses) => {
     const grouped = {};
     expenses.forEach((expense) => {
-      const month = moment(expense.date).format('YYYY-MM');
+      const month = moment(expense.date).format("YYYY-MM");
       if (!grouped[month]) grouped[month] = [];
       grouped[month].push(expense);
     });
@@ -39,7 +43,7 @@ const TrackingLog = () => {
   };
 
   // Get weekly expenses
-  const weeklyExpenses = groupByWeek(expenses);
+  // const weeklyExpenses = groupByWeek(expenses);
 
   // Get monthly expenses
   const monthlyExpenses = groupByMonth(expenses);
@@ -58,30 +62,9 @@ const TrackingLog = () => {
         <div className="tracking-log-section overall-expenses">
           <h3>Overall Expenses</h3>
           <div className="expense-summary">
-            <p>Total Expenses: <strong>${overallExpensesTotal}</strong></p>
-          </div>
-        </div>
-
-        {/* Weekly Expenses Section */}
-        <div className="tracking-log-section weekly-expenses">
-          <h3>Weekly Expenses</h3>
-          <div className="expenses-list">
-            {Object.keys(weeklyExpenses).map((week) => (
-              <div key={week} className="week-expense-item">
-                <div className="week-header">
-                  <h4>Week {week}</h4>
-                  <p>Total for Week {week}: <strong>${getTotalAmount(weeklyExpenses[week])}</strong></p>
-                </div>
-                <ul className="expense-details">
-                  {weeklyExpenses[week].map((expense) => (
-                    <li key={expense.id}>
-                      <span>{expense.category}: ${expense.amount}</span>
-                      <span>on {moment(expense.date).format('MMMM Do, YYYY')}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <p>
+              Total Expenses: <strong>${overallExpensesTotal}</strong>
+            </p>
           </div>
         </div>
 
@@ -92,14 +75,18 @@ const TrackingLog = () => {
             {Object.keys(monthlyExpenses).map((month) => (
               <div key={month} className="month-expense-item">
                 <div className="month-header">
-                  <h4>{moment(month, 'YYYY-MM').format('MMMM YYYY')}</h4>
-                  <p>Total for {moment(month, 'YYYY-MM').format('MMMM YYYY')}: <strong>${getTotalAmount(monthlyExpenses[month])}</strong></p>
+                  <h4>{moment(month, "YYYY-MM").format("MMMM YYYY")}</h4>
+                  <p>
+                    Total for {moment(month, "YYYY-MM").format("MMMM YYYY")}: <strong>$ {getTotalAmount(monthlyExpenses[month])}</strong>
+                  </p>
                 </div>
                 <ul className="expense-details">
                   {monthlyExpenses[month].map((expense) => (
                     <li key={expense.id}>
-                      <span>{expense.category}: ${expense.amount}</span>
-                      <span>on {moment(expense.date).format('MMMM Do, YYYY')}</span>
+                      <span>
+                        {expense.category}: $ {expense.amount * -1}
+                      </span>
+                      <span>on {moment(expense.date).format("MMMM Do, YYYY")}</span>
                     </li>
                   ))}
                 </ul>

@@ -27,6 +27,7 @@ const LoginForm = ({ onRegisterClick }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
     try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({ username, password }), {
         headers: { "Content-Type": "application/json" },
@@ -44,7 +45,10 @@ const LoginForm = ({ onRegisterClick }) => {
       setPassword("");
       navigate("/dashboard");
     } catch (err) {
-      setError("Invalid username or password");
+      // Extract error message
+      const errorMessage = err.response?.data?.message || "Invalid username or password"; // Fallback error message
+
+      setError(errorMessage); // Display error to the user
     }
   };
 

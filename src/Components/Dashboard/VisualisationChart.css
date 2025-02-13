@@ -10,7 +10,7 @@
   overflow: hidden; /* Ensures the content stays within the container */
   display: flex;
   flex-direction: column;
-  min-height: 500px; /* Ensure there is enough space for the chart */
+  min-height: 600px; /* Ensure there is enough space for the chart */
 }
 
 /* Container for the chart, ensure it can scale with the content */

@@ -1,14 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { FaUserCircle } from "react-icons/fa"; // Import profile icon
-import './Profile.css'; 
+import "./Profile.css";
+import axios from "../../api/axios";
 
 const Profile = ({ handleSectionClick, handleLogout }) => {
   const [isProfileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [user, setUser] = useState({});
   const profileRef = useRef(null);
 
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!isProfileMenuOpen); // Toggle profile menu
   };
+
+  const authAxios = axios.create({
+    baseURL: "http://localhost:8080/",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
 
   // Close the profile menu if the user clicks outside
   useEffect(() => {
@@ -19,11 +28,22 @@ const Profile = ({ handleSectionClick, handleLogout }) => {
     };
 
     // Add event listener when component mounts
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+
+    const fetchUser = async () => {
+      try {
+        const response = await authAxios.get("/user/profile");
+        setUser(response.data); // Assume the API returns an array of categories
+      } catch (error) {
+        console.error("Error fetching user", error);
+      }
+    };
+
+    fetchUser();
 
     // Cleanup event listener when component unmounts
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -31,7 +51,10 @@ const Profile = ({ handleSectionClick, handleLogout }) => {
     <div className="profile-section" ref={profileRef}>
       <div className="profile-info" onClick={toggleProfileMenu}>
         <FaUserCircle className="profile-icon" /> {/* Profile icon */}
-        <span className="profile-name">John Doe</span> {/* Display user name */}
+        <span className="profile-name">
+          {user.name} {user.surname}
+        </span>{" "}
+        {/* Display user name */}
       </div>
 
       {/* Profile Dropdown */}
@@ -39,7 +62,7 @@ const Profile = ({ handleSectionClick, handleLogout }) => {
         <div className="profile-dropdown">
           <ul>
             <li>
-              <a href="#view-profile" onClick={() => handleSectionClick('settings')}>
+              <a href="#view-profile" onClick={() => handleSectionClick("settings")}>
                 View Profile
               </a>
             </li>
