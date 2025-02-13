@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Overview.css"; // Import the CSS file
 import axios from "axios"; // You'll need axios or any other library to make API requests
+import VisualisationChart from "./VisualisationChart";
 
 const FinanceOverview = () => {
   const [expenses, setExpenses] = useState([]);
@@ -147,7 +148,9 @@ const FinanceOverview = () => {
       </div>
 
       {/* Visualization Chart Placeholder */}
-      <div className="chart-placeholder">Visualization Chart</div>
+      <section className="visualisation-chart">
+        <VisualisationChart />
+      </section>
     </div>
   );
 };
