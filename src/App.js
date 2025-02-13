@@ -18,14 +18,6 @@ function App() {
         <Router>
             <Routes>
                 <Route
-                    path="/"
-                    element={!isRegistering ? (
-                        <LoginForm onRegisterClick={handleRegisterClick} />
-                    ) : (
-                        <RegisterForm onBackToLoginClick={handleBackToLoginClick} />
-                    )}
-                />
-                <Route
                     path="/dashboard"
                     element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
                 />
