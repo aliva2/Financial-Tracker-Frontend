@@ -9,29 +9,30 @@ import ExpenseAnalyzer from "./Components/openAI/ExpenseAnalyzer";
 function App() {
   const [isRegistering, setIsRegistering] = useState(false);
 
-    const handleRegisterClick = () => setIsRegistering(true);
-    const handleBackToLoginClick = () => setIsRegistering(false);
+  const handleRegisterClick = () => {
+    setIsRegistering(true);
+  };
 
-    const isAuthenticated = !!localStorage.getItem("jwt");
+  const handleBackToLoginClick = () => {
+    setIsRegistering(false);
+  };
 
-    return (
-        <Router>
-            <Routes>
-                <Route
-                    path="/dashboard"
-                    element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
-                />
-                <Route
-                    path="/settings"
-                    element={isAuthenticated ? <Settings /> : <Navigate to="/" />}
-                />
-                <Route
-                    path="/expense-analyzer"
-                    element={isAuthenticated ? <ExpenseAnalyzer /> : <Navigate to="/" />}
-                />
-            </Routes>
-        </Router>
-    );
+  const isAuthenticated = !!localStorage.getItem("accessToken");
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={!isRegistering ? <LoginForm onRegisterClick={handleRegisterClick} /> : <RegisterForm onBackToLoginClick={handleBackToLoginClick} />} />
+        <Route
+          path="/dashboard"
+          //DON'T FORGET TO FIX IT AFTER CONNECTION TO THE BACKEND
+          element={<Dashboard />}
+        />
+        <Route path="/settings" element={isAuthenticated ? <Settings /> : <Navigate to="/" />} />
+        <Route path="/expense-analyzer" element={isAuthenticated ? <ExpenseAnalyzer /> : <Navigate to="/" />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
