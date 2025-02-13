@@ -1,5 +1,6 @@
 /* Components/Charts.css */
 
+
 .charts-container {
   max-width: 800px;
   width: 100%;
@@ -10,11 +11,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .charts-container h2 {
   font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 20px;
 }
+
 
 .charts-container p {
   font-size: 1rem;
@@ -22,12 +25,14 @@
   margin-bottom: 20px;
 }
 
+
 .chart-navigation {
-  justify-content: space-between;
   display: flex;
   gap: 15px;
   margin-bottom: 30px;
+  justify-content: space-between;
 }
+
 
 .chart-navigation button {
   flex: 1;
@@ -41,9 +46,11 @@
   transition: background-color 0.3s ease;
 }
 
+
 .chart-navigation button:hover {
   background-color: #2980b9;
 }
+
 
 .chart {
   background-color: #fff;
@@ -52,9 +59,11 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .chart-section {
   margin-bottom: 20px;
 }
+
 
 .chart-section h3 {
   font-size: 1.5rem;
@@ -62,14 +71,17 @@
   margin-bottom: 15px;
 }
 
+
 .chart-section p {
   font-size: 1rem;
   color: #2c3e50;
 }
 
+
 .chart-section strong {
   font-weight: bold;
 }
+
 
 .chart-placeholder {
   width: 100%;
@@ -82,3 +94,36 @@
   font-size: 1.2rem;
   border-radius: 8px;
 }
+
+
+.chart-section2 {
+  margin-bottom: 5px;
+}
+
+
+.chart-section2 h3 {
+  font-size: 1.5rem;
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+
+.chart-section2 p {
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+
+.chart-section2 strong {
+  font-weight: bold;
+}
+
+
+.chart-section2 {
+  justify-content: center;
+  max-width: 60%;
+  max-height: 60%;
+  margin: auto;
+  display: block;
+}
+
