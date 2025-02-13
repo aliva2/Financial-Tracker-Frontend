@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Overview.css"; // Import the CSS file
-import axios from "axios"; // You'll need axios or any other library to make API requests
+import axios from "../../api/axios"; // You'll need axios or any other library to make API requests
 import VisualisationChart from "./VisualisationChart";
 import AIRecommendations from "./AIRecommendations";
 
@@ -18,7 +18,7 @@ const FinanceOverview = () => {
   const [date, setDate] = useState();
 
   const authAxios = axios.create({
-    baseURL: "http://localhost:8080/api",
+    baseURL: axios.baseURL,
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
@@ -132,7 +132,7 @@ const FinanceOverview = () => {
         </div>
 
         {/* Tracking and AI Recommendations */}
-        <div className="info-box">      
+        <div className="info-box">
           <section className="recommend">
             <AIRecommendations />
           </section>

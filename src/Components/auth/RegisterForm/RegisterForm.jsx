@@ -4,8 +4,6 @@ import "./RegisterForm.css";
 import { FaUser, FaLock, FaEnvelope, FaChevronDown } from "react-icons/fa"; // Importing icons for Username, Email, and Password.
 import { registerUser } from "../AuthService";
 import useAuth from "../../../hooks/useAuth";
-// import axios from "../../../api/axios";
-// const REGISTER_URL = "/api/auth/register";
 
 const RegisterForm = ({ onBackToLoginClick }) => {
   const [username, setUsername] = useState("");

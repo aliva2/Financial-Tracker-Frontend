@@ -13,7 +13,7 @@ const Profile = ({ handleSectionClick, handleLogout }) => {
   };
 
   const authAxios = axios.create({
-    baseURL: "http://localhost:8080/",
+    baseURL: axios.baseURL,
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
