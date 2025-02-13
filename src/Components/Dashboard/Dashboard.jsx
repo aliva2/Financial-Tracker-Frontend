@@ -29,9 +29,14 @@ const Dashboard = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   const handleSectionClick = (section) => {
-    setActiveSection(section); // Set active section when clicking navigation item
-  };
+    setActiveSection(section);
 
+    if (section === "ai-recommendations") {
+      navigate("/expense-analyzer");
+    } else {
+      setActiveSection(section);
+    } // Set active section when clicking navigation item
+  };
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
