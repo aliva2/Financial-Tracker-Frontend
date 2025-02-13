@@ -29,7 +29,7 @@ const TrackingLog = () => {
     };
 
     fetchMonthly();
-  });
+  }, []);
 
   // Group expenses by month
   const groupByMonth = (expenses) => {
