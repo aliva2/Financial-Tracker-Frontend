@@ -82,9 +82,9 @@ const Dashboard = () => {
             <li onClick={() => handleSectionClick("settings")} className={activeSection === "settings" ? "active" : ""}>
               Settings
             </li>
-            <li onClick={() => handleSectionClick("preferences")} className={activeSection === "preferences" ? "active" : ""}>
+            {/* <li onClick={() => handleSectionClick("preferences")} className={activeSection === "preferences" ? "active" : ""}>
               Preferences
-            </li>
+            </li> */}
             <li onClick={() => handleSectionClick("categories")} className={activeSection === "categories" ? "active" : ""}>
               Manage Categories
             </li>
