@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Overview.css"; // Import the CSS file
 import axios from "axios"; // You'll need axios or any other library to make API requests
 import VisualisationChart from "./VisualisationChart";
+import AIRecommendations from "./AIRecommendations";
 
 const FinanceOverview = () => {
   const [expenses, setExpenses] = useState([]);
@@ -131,9 +132,11 @@ const FinanceOverview = () => {
         </div>
 
         {/* Tracking and AI Recommendations */}
-        <div className="info-box">Tracking Date</div>
-        <div className="info-box">AI Recommendations</div>
-        <div className="info-box">Budget Amount</div>
+        <div className="info-box">      
+          <section className="recommend">
+            <AIRecommendations />
+          </section>
+        </div>
 
         {/* Recommendations List */}
         <div className="recently-spent">
