@@ -8,7 +8,7 @@ const AppRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Dashboard/*" element={<Dashboard />} /> {/* Nested Routes */}
+        <Route path="/dashboard/*" element={<Dashboard />} /> {/* Nested Routes */}
         <Route path="*" element={<NotFound />} /> {/* Catch-all for 404 */}
       </Routes>
     </Router>
