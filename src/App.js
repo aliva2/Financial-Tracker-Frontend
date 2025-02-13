@@ -31,7 +31,8 @@ function App() {
                 />
                 <Route
                     path="/dashboard"
-                    element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+                    //DON'T FORGET TO FIX IT AFTER CONNECTION TO THE BACKEND
+                    element={ <Dashboard /> }
                 />
                 <Route
                     path="/settings"
