@@ -5,12 +5,6 @@ import RegisterForm from "./Components/auth/RegisterForm/RegisterForm";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Settings from "./Components/Dashboard/Settings";
 import ExpenseAnalyzer from "./Components/openAI/ExpenseAnalyzer";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import LoginForm from "./Components/auth/LoginForm/LoginForm";
-import RegisterForm from "./Components/auth/RegisterForm/RegisterForm";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import Settings from "./Components/Dashboard/Settings";
-import ExpenseAnalyzer from "./Components/openAI/ExpenseAnalyzer";
 
 function App() {
   const [isRegistering, setIsRegistering] = useState(false);
