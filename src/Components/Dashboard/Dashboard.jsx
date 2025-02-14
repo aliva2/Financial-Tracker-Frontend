@@ -3,6 +3,7 @@ import "./DashboardForm.css";
 import VisualisationChart from "./VisualisationChart"; // Import the chart component
 import Overview from "./Overview";
 import Expenses from "./Expenses";
+import Incomes from "./Incomes";
 import AIRecommendations from "./AIRecommendations";
 import TrackingLog from "./TrackingLog";
 import Charts from "./Charts";
@@ -74,6 +75,9 @@ const Dashboard = () => {
             <li onClick={() => handleSectionClick("expenses")} className={activeSection === "expenses" ? "active" : ""}>
               Expenses
             </li>
+            <li onClick={() => handleSectionClick("incomes")} className={activeSection === "incomes" ? "active" : ""}>
+              Incomes
+            </li>
             <li onClick={() => handleSectionClick("ai-recommendations")} className={activeSection === "ai-recommendations" ? "active" : ""}>
               AI Recommendations
             </li>
@@ -116,6 +120,7 @@ const Dashboard = () => {
         {activeSection === "overview" && <Overview />}
         {activeSection === "tracking-log" && <TrackingLog />}
         {activeSection === "expenses" && <Expenses />}
+        {activeSection === "incomes" && <Incomes />}
         {activeSection === "ai-recommendations" && <AIRecommendations />}
         {activeSection === "visualisation" && <VisualisationChart />}
         {activeSection === "charts" && <Charts />}
