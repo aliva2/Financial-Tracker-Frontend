@@ -3,6 +3,7 @@ import "./Overview.css"; // Import the CSS file
 import axios from "../../api/axios"; // You'll need axios or any other library to make API requests
 import VisualisationChart from "./VisualisationChart";
 import AIRecommendations from "./AIRecommendations";
+import { format, isToday, isYesterday, parseISO } from "date-fns";
 
 const FinanceOverview = () => {
   const [expenses, setExpenses] = useState([]);
@@ -114,6 +115,22 @@ const FinanceOverview = () => {
     }
   };
 
+  const formatDate = (dateString) => {
+    const date = parseISO(dateString);
+    if (isToday(date)) return "Today";
+    if (isYesterday(date)) return "Yesterday";
+    return format(date, "dd-MM-yyyy");
+  };
+
+  const groupedExpenses = expenses.reduce((acc, expense) => {
+    const key = expense.date;
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(expense);
+    return acc;
+  }, {});
+
   return (
     <div className="finance-container">
       <div className="grid-container">
@@ -157,7 +174,7 @@ const FinanceOverview = () => {
           </select>
           <input type="number" placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
           <input type="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
-          <input type="date" onChange={(e) => setDate(e.target.value)} />
+          {/* <input type="date" onChange={(e) => setDate(e.target.value)} /> */}
           <button onClick={handleSubmit}>Add Expense</button>
         </div>
 
@@ -170,13 +187,31 @@ const FinanceOverview = () => {
 
         {/* Recommendations List */}
         <div className="recently-spent">
-          <ul>
+          {/* <ul>
             {expenses.slice(0, 5).map((expense, index) => (
               <li key={index}>
                 {expense.date} spent ${expense.amount * -1} on {expense.category.toLowerCase()}
               </li>
             ))}
-          </ul>
+          </ul> */}
+          {Object.keys(groupedExpenses)
+            .map((date) => ({
+              date,
+              transactions: groupedExpenses[date],
+            }))
+            .slice(0, 10)
+            .map(({ date, transactions }) => (
+              <div key={date} className="mb-4">
+                <h3 className="text-lg font-bold">{formatDate(date)}</h3>
+                <ul className="pl-4">
+                  {transactions.map((txn, index) => (
+                    <li key={index} className="text-gray-700">
+                      ${txn.amount * -1} on {txn.category.toLowerCase()}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
         </div>
       </div>
 
