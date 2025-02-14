@@ -133,9 +133,7 @@ const Dashboard = () => {
         {activeSection === "help" && <Help />}
 
         {/* Footer Section */}
-        <div className="site">
-          <Footer />
-        </div>
+        <div className="site">{/* <Footer /> */}</div>
       </div>
     </div>
   );
